@@ -248,6 +248,7 @@
     <Resource Include="images\pic.png" />
     <Resource Include="images\login.gif" />
     <Resource Include="images\paw.png" />
+    <Resource Include="images\vet.png" />
     <Content Include="VetDbContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>VetDbContext.Context.cs</LastGenOutput>
