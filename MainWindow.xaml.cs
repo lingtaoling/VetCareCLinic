@@ -26,7 +26,7 @@ namespace VetClinic
             
         }
 
-        private void BtnAppointment_Click(object sender, RoutedEventArgs e)
+        /*private void BtnAppointment_Click(object sender, RoutedEventArgs e)
         {
             CC.Content = new AppointmentUC();
         }
@@ -39,6 +39,6 @@ namespace VetClinic
         private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
             CC.Content = new HomeUC();
-        }
+        }*/
     }
 }
