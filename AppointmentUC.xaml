@@ -32,11 +32,11 @@
         <ListView Name="LvAppointment" Margin="295,77,10,27">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Owner" Width="120"  DisplayMemberBinding="{Binding OwnerName}" />
-                    <GridViewColumn Header="Pet" Width="90" DisplayMemberBinding="{Binding petName}" />
-                    <GridViewColumn Header="Vet" Width="90" DisplayMemberBinding="{Binding doctorName}" />
+                    <GridViewColumn Header="Owner" Width="120"  DisplayMemberBinding="{Binding owner_id }"  />
+                    <GridViewColumn Header="Pet" Width="90" DisplayMemberBinding="{Binding pet_id}" />
+                    <GridViewColumn Header="Vet" Width="90" DisplayMemberBinding="{Binding user_id}" />
                     <GridViewColumn Header="Notes" Width="100" DisplayMemberBinding="{Binding notes}" />
-                    <GridViewColumn Header="When" Width="100" DisplayMemberBinding="{Binding when, StringFormat='\d\t'}" />
+                    <GridViewColumn Header="When" Width="100" DisplayMemberBinding="{Binding when}" />
                 </GridView>
             </ListView.View>
         </ListView>
