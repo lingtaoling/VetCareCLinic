@@ -47,7 +47,7 @@ namespace VetClinic
         {
                 DateTime when = DpAppointment.SelectedDate.Value.Date.Add(TpAppointments.SelectedTime.Value.TimeOfDay);
 
-            string vetIdStr = ComboPet.SelectedValue.ToString();
+            string vetIdStr = ComboVet.SelectedValue.ToString();
             int vet_id = Convert.ToInt32(vetIdStr);
             string ownerIdStr = ComboOwner.SelectedValue.ToString();
             int owner_id = Convert.ToInt32(ownerIdStr);

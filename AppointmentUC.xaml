@@ -8,6 +8,7 @@
              mc:Ignorable="d" Loaded="UserControl_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White" Margin="0,0,0,10">
+        
         <Label Content="Appointments" FontSize="28" HorizontalAlignment="Left" Margin="215,23,0,0" VerticalAlignment="Top" Width="223" Height="49"/>
         <Label Content="Doctor:" HorizontalAlignment="Left" Margin="16,86,0,0" VerticalAlignment="Top" Width="47"/>
         <Label Content="Name:" HorizontalAlignment="Left" Margin="16,117,0,0" VerticalAlignment="Top" Width="78"/>
@@ -39,9 +40,9 @@
             </ListView.Resources>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Owner" Width="120" DisplayMemberBinding="{Binding Path=Owner.name, Mode=TwoWay}" />
-                    <GridViewColumn Header="Pet" Width="90" DisplayMemberBinding="{Binding Path=Pet.name, Mode=TwoWay}" />
-                    <GridViewColumn Header="Vet" Width="90" DisplayMemberBinding="{Binding Path=Vet.User.name, Mode=TwoWay}" />
+                    <GridViewColumn Header="Owner" Width="120" DisplayMemberBinding="{Binding Path=Owner.name, Mode=OneWay}" />
+                    <GridViewColumn Header="Pet" Width="90" DisplayMemberBinding="{Binding Path=Pet.name, Mode=OneWay}" />
+                    <GridViewColumn Header="Vet" Width="90" DisplayMemberBinding="{Binding Path=Vet.User.name, Mode=OneWay}" />
                     <GridViewColumn Header="Notes" Width="100" DisplayMemberBinding="{Binding note}" />
                     <GridViewColumn Header="When" Width="100" DisplayMemberBinding="{Binding when}" />
                 </GridView>
