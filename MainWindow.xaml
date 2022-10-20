@@ -3,6 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        FontSize="18" FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize"
+        WindowStyle="None" AllowsTransparency="True" Background="White"
         xmlns:local="clr-namespace:VetClinic"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
@@ -27,7 +30,15 @@
         </Grid.RowDefinitions>
 
 
+        
 
-        <ContentControl></ContentControl>
+
+        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="22" Text="Veterinarian" Grid.ColumnSpan="3" Margin="20" Foreground="#FF42389D" FontWeight="Bold" TextAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" FontSize="22" Text="Administrator" Grid.ColumnSpan="3" Margin="20" Foreground="#FF42389D" FontWeight="Bold"/>
+
+       
+
+
     </Grid>
+
 </Window>
