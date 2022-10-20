@@ -30,11 +30,14 @@ namespace VetClinic
        public static AddEditVet addEditVetDialog = new AddEditVet();
        public static AdminUsers adminDialog = new AdminUsers();
        public static AddEditOwner addEditOwnerDialog = new AddEditOwner();
-        public static OwnerDialog ownerDialog = new OwnerDialog();
-        public static PetDialog petDialog = new PetDialog();
-        public static PrescriptionDialog prescriptionDialog = new PrescriptionDialog();
+       public static OwnerDialog ownerDialog = new OwnerDialog();
+       public static PetDialog petDialog = new PetDialog();
+       public static PrescriptionDialog prescriptionDialog = new PrescriptionDialog();
 
-        
+       
+
+
+
 
 
     }

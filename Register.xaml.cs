@@ -43,6 +43,8 @@ namespace VetClinic
         {
             if (!AreInputsValid()) return;
             int.TryParse(PhoneInput.Text, out int phone);
+
+            // Fixme: need ENUM if having time
             int role=0;
             if(RbnAdmin.IsChecked == true)
             {
@@ -54,10 +56,22 @@ namespace VetClinic
             }
             try
             {
-                User newUser = new User(UserNameInput.Text, NameInput.Text, EmailInput.Text, PasswordInput.Password, phone, role) ;
-              
-               Globals.dbContext.Users.Add(newUser);
-               Globals.dbContext.SaveChanges(); // SystemException
+                var findUserByEmail = Globals.dbContext.Users.FirstOrDefault(u => u.email == EmailInput.Text);
+                if (findUserByEmail != null)//User was found 
+                {
+                    MessageBox.Show(this, "Email has been registered", "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                var findUserByUserName = Globals.dbContext.Users.FirstOrDefault(u => u.username == UserNameInput.Text);
+                if (findUserByUserName != null)//User was found 
+                {
+                    MessageBox.Show(this, "Username has been registered", "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                User newUser = new User(UserNameInput.Text, NameInput.Text, EmailInput.Text, PasswordInput.Password, phone, role) ;   
+                Globals.dbContext.Users.Add(newUser);
+                Globals.dbContext.SaveChanges(); // SystemException
 
                 // Add vet at the same time
                 
@@ -70,9 +84,9 @@ namespace VetClinic
                     Globals.dbContext.SaveChanges(); // SystemException
                 }
 
-                //ResetFields();
-                Globals.registerWindow.Hide();
-                Globals.mainWindow.Show();
+                this.Close();
+                //Globals.registerWindow.Hide();
+                Globals.loginWindow.Show();
 
             }
             catch (ArgumentException ex)

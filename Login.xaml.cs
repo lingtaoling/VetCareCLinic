@@ -57,12 +57,12 @@ namespace VetClinic
                 {
                     if (myUser.role == 1) // vet login
                     {
-                        Hide();
+                        this.Close();
                         Globals.mainWindow.Show();
                     }
                     if (myUser.role == 0) // admin login
                     {
-                        Hide();
+                        this.Close();
                         Globals.adminDialog.Show();
                     }
 
@@ -87,7 +87,7 @@ namespace VetClinic
         private void BtnSignUp_Click(object sender, RoutedEventArgs e)
         {
             
-         Hide();
+         this.Hide();
          Globals.registerWindow.Show();
 
         }

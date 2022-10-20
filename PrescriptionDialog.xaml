@@ -7,8 +7,8 @@
         FontSize="18" FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" 
         mc:Ignorable="d" 
-        Title="AdminWindow" Height="645" Width="975">
-    <DockPanel>
+        Title="AdminWindow" Height="645" Width="1165" Name="PresDialog">
+    <DockPanel Name="DockerAll">
         <Grid Margin="20 20 0 20">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="30" ShadowDepth="1" Opacity="0.4"/>
@@ -56,20 +56,59 @@
                     </StackPanel>
                 </Grid>
             </Border>
+
             <!--Right Section-->
-            <Border Grid.Column="1" Background="#ffffff" CornerRadius="0 15 15 0" MouseDown="Border_MouseDown">
+            <Border Background="#ffffff" CornerRadius="0 15 15 0" MouseDown="Border_MouseDown" Grid.ColumnSpan="2" Margin="301,0,10,0">
+
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1.5*" />
+                    </Grid.RowDefinitions>
                     <!--Close Icon-->
                     <materialDesign:PackIcon Kind="Close"  MouseDoubleClick="Close_Click" VerticalAlignment="Top" Width="20" Height="20" HorizontalAlignment="Right" Margin="0 13 14 0" Opacity="0.3" />
 
-                    <!--Inputs-->
-                    <StackPanel VerticalAlignment="Top" Margin="10,0,248,0" Height="292">
-                        
-                        <Button  Name="BtnPrescription" Content="Edit Prescription" materialDesign:ButtonAssist.CornerRadius="22" FontSize="16" FontWeight="Bold" Height="45" Width="232" Margin="0 20 0 10" Foreground="#42389D" Click="BtnPrescription_Click"  Style="{StaticResource MaterialDesignFlatButton}"/>
-                        <ListView Name="lvPrescriptions" MouseDoubleClick="lvPrescriptions_MouseDoubleClick" SelectionMode="Single" BorderBrush="#FF8994A7" Width="492">
+                    <StackPanel Grid.Row="0">
+                        <Button  Name="Appointment" Content="Appointment" materialDesign:ButtonAssist.CornerRadius="22" FontSize="16" FontWeight="Bold" Height="45" Width="232" Margin="0 20 0 10" Foreground="#42389D"  Style="{StaticResource MaterialDesignFlatButton}"/>
+                        <ListView Name="lvAppointments" MouseDoubleClick="lvAppointments_MouseDoubleClick" SelectionMode="Single" BorderBrush="#FF8994A7" Width="828" Height="166">
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                          
+                                    <MenuItem Header="Add prescription" Click="MenuItem_ListAddPresClick"/>
+                                    <MenuItem Header="Delete" Click="MenuItem_ListDeleteItemAppointmentClick"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+
+                            <ListView.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </ListView.Resources>
+                            <ListView.View >
+                                <GridView >
+                                    <GridViewColumn Header="Appointment ID" Width="110"   DisplayMemberBinding="{Binding id}" />
+                                    <GridViewColumn Header="Vet ID" Width="160" DisplayMemberBinding="{Binding vet_id}" />
+                                    <GridViewColumn Header="Owner ID" Width="120" DisplayMemberBinding="{Binding owner_id}" />
+                                    <GridViewColumn Header="Pet ID" Width="140" DisplayMemberBinding="{Binding pet_id}" />
+                                    <GridViewColumn Header="When" Width="170" DisplayMemberBinding="{Binding when}" />
+                                    <GridViewColumn Header="Note" Width="170" DisplayMemberBinding="{Binding note}" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </StackPanel>
+
+                    <!--Inputs-->
+                    <StackPanel VerticalAlignment="Top" Margin="10,0,34,0" Height="333" Grid.Row="1">
+
+
+
+                        <Button  Name="BtnPrescription" Content="Edit Prescription" materialDesign:ButtonAssist.CornerRadius="22" FontSize="16" FontWeight="Bold" Height="45" Width="232" Margin="0 20 0 10" Foreground="#42389D" Click="BtnEditPrescription_Click"  Style="{StaticResource MaterialDesignFlatButton}"/>
+                        <ListView Name="lvPrescriptions" MouseDoubleClick="lvPrescriptions_MouseDoubleClick" SelectionMode="Single" BorderBrush="#FF8994A7" Width="789" Height="227">
+                            <ListView.ContextMenu>
+                                <ContextMenu>
                                     <MenuItem Header="Edit" Click="MenuItem_ListEditItemClick"/>
                                     <MenuItem Header="Delete" Click="MenuItem_ListDeleteItemClick"/>
                                 </ContextMenu>
@@ -81,18 +120,19 @@
                             </ListView.Resources>
                             <ListView.View >
                                 <GridView >
-
-
-                                    <GridViewColumn Header="Pet ID" Width="120"   DisplayMemberBinding="{Binding name}" />
-                                    <GridViewColumn Header="Pet Name" Width="150" DisplayMemberBinding="{Binding email}" />
-                                    <GridViewColumn Header="Phone" Width="100" DisplayMemberBinding="{Binding phone}" />
-                                    <GridViewColumn Header="Address" Width="140" DisplayMemberBinding="{Binding address}" />
+                                    <GridViewColumn Header="ID" Width="110"   DisplayMemberBinding="{Binding id}" />
+                                    <GridViewColumn Header="Appointment ID" Width="160" DisplayMemberBinding="{Binding appointment_id}" />
+                                    <GridViewColumn Header="Drug ID" Width="120" DisplayMemberBinding="{Binding drug_id}" />
+                                    <GridViewColumn Header="Quantity" Width="140" DisplayMemberBinding="{Binding quantity_sold}" />
+                                    
                                 </GridView>
                             </ListView.View>
                         </ListView>
 
 
                     </StackPanel>
+                    <Label Name="Status" Content="Status" HorizontalAlignment="Left" Margin="547,320,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+
                 </Grid>
 
             </Border>
@@ -101,18 +141,6 @@
         -->
 
         </Grid>
-        <StatusBar DockPanel.Dock="Bottom" Height="168">
-            <StatusBarItem RenderTransformOrigin="0.5,0.5" Width="42" Height="240">
-                <StatusBarItem.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </StatusBarItem.RenderTransform>
-                <TextBlock Name="tbStatus" />
-            </StatusBarItem>
-        </StatusBar>
+
     </DockPanel>
 </Window>

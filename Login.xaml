@@ -30,7 +30,7 @@
 
                     <TextBlock TextAlignment="Center" FontWeight="SemiBold" FontSize="20" Text="Virtual Animal Health Clinic" Foreground="#ffff"/>
                     <TextBlock TextWrapping="Wrap" FontSize="15" TextAlignment="Center" Margin="0 20 0 20" Foreground="#ffff" Text="We provide the best vet services."/>
-                    <TextBlock TextWrapping="Wrap" FontSize="15" TextAlignment="Center" Margin="0 0 0 20" Foreground="#ffff" Text="tom@email.com Aaaaa1111**"/>
+                    
                 </StackPanel>
 
                 <!--Paw-->
@@ -53,21 +53,23 @@
                
 
                 <!--Inputs-->
-                <StackPanel VerticalAlignment="Center" Margin="75,0,75,0" Height="579">
+                <StackPanel VerticalAlignment="Center" Margin="75,0,75,0" Height="613">
                     <Image Source="/images/login.gif" Margin="0 0 0 0" Width="237" Height="194"/>
                     
                     
                     <TextBox Name="EmailInput" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-20" materialDesign:HintAssist.Hint="Email" Text="tom@email.com" Margin="0 20 0 40" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <PasswordBox Name="PasswordInput" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-18" materialDesign:HintAssist.Hint="Password" Password="1234567890" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                    <PasswordBox Name="PasswordInput" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-18" materialDesign:HintAssist.Hint="Password" Password="Aaaaa1111**" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
 
-                    <StackPanel Orientation="Horizontal" Margin="20">
+                    <StackPanel Orientation="Horizontal" Margin="20 40" Height="132">
                         <Button  Name="BtnLogIn" Content="Log In" Background="#42389D" Foreground="#ffffff" FontSize="18" Click="BtnLogIn_Click" materialDesign:ButtonAssist.CornerRadius="22" Height="45" Width="120" />
                        
                         <Button  Name="BtnSignUp" Content="or Sign up" materialDesign:ButtonAssist.CornerRadius="22" FontSize="16" Height="45" Width="141" Margin="5 0 0 0" Foreground="#42389D" Click="BtnSignUp_Click" Style="{StaticResource MaterialDesignFlatButton}"/>
                         
                     </StackPanel>
+                    <!--
                     <Button  Name="BtnMain" Content="Main Window" materialDesign:ButtonAssist.CornerRadius="22" FontSize="16" Height="45" Width="151" Margin="5 0 0 0" Foreground="#42389D" Click="BtnMain_Click" Style="{StaticResource MaterialDesignFlatButton}"/>
-                    <Button  Name="BtnAdmin" Content="Admin" materialDesign:ButtonAssist.CornerRadius="22" FontSize="16" Height="45" Width="151" Margin="5 0 0 0" Foreground="#42389D" Click="BtnAdmin_Click" Style="{StaticResource MaterialDesignFlatButton}"/>
+                    <Button  Name="BtnAdmin" Content="Admin" materialDesign:ButtonAssist.CornerRadius="22" FontSize="16" Height="45" Width="151" Margin="5 0 0 0" Foreground="#42389D" Click="BtnAdmin_Click" Style="{StaticResource MaterialDesignFlatButton}"/> -->
+                    
                 </StackPanel>
             </Grid>
             
