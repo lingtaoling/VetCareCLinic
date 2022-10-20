@@ -3,19 +3,81 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:VetClinic"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid.ColumnDefinitions >
-            <ColumnDefinition Width="0.25*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-            <StackPanel Background="Beige">
-            <Button Name="Appointments" Content="Appointment" Click="BtnAppointment_Click" Width="100" Height="40" Margin="15,15,0,0"/>
-            <Button Name="Home" Content="Home" Click="BtnHome_Click" Width="100" Height="40" Margin="15,15,0,0"/>
-        </StackPanel>
-            <ContentControl Name="CC" Grid.Column="1" />
         
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        FontSize="18" FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" 
+        mc:Ignorable="d" 
+        Title="AdminWindow" Height="645" Width="900">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="30" ShadowDepth="1" Opacity="0.4"/>
+        </Grid.Effect>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="166*"/>
+            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="615*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Left Section-->
+        <Border Background="#42389D" CornerRadius="15 0 0 15" ClipToBounds="True" Grid.ColumnSpan="3" Margin="0,0,574,0" Grid.RowSpan="2">
+
+
+            <Border.Clip>
+                <RectangleGeometry RadiusX="10" RadiusY="10" Rect="0,0,830,605"/>
+            </Border.Clip>
+
+            <Grid>
+                <!--Title-->
+                <StackPanel Margin="0 10 0 0" VerticalAlignment="Top">
+
+                    <Image Source="/images/pic.png" Margin="0 0 0 40" Width="180" Height="180"/>
+
+
+
+                    <Button Name="BtnAppoinment" Content="Make An Appointment" Background="#ffffff" Foreground="#42389D" FontSize="18" Click="BtnAppoinment_Click" materialDesign:ButtonAssist.CornerRadius="22" Height="45" Width="260"  Margin="0 20 0 20"/>
+                    <Button Name="BtnAdmin" Content="Admin Panel" Background="#ffffff" Foreground="#42389D" FontSize="18" Click="BtnAdmin_Click" materialDesign:ButtonAssist.CornerRadius="22" Height="45" Width="260" Margin="0 20 0 20" />
+                    <Button Name="BtnExit" Content="Exit" Background="#ffffff" Foreground="#42389D" FontSize="18" Click="BtnExit_Click" materialDesign:ButtonAssist.CornerRadius="22" Height="45" Width="260" Margin="0 20 0 20" />
+
+
+
+
+                </StackPanel>
+                <!--Paw-->
+                <StackPanel Margin="0 470 0 0" VerticalAlignment="Top">
+
+                    <Image Source="/images/paw.png" Margin="0 0 0 20" Width="50" Height="40"/>
+                    <Image Source="/images/paw.png" Margin="-100 0 0 20" Width="50" Height="40"/>
+                    <Image Source="/images/paw.png" Margin="70 -20 0 0" Width="50" Height="40"/>
+
+                </StackPanel>
+            </Grid>
+        </Border>
+        <!--Right Section-->
+        <Border Grid.Column="2" Background="#ffffff" CornerRadius="0 15 15 0" MouseDown="Border_MouseDown" Margin="53,0,10,0" Grid.RowSpan="2">
+            <Grid Margin="-6,0,0,0">
+                <!--Close Icon-->
+                <materialDesign:PackIcon Kind="Close"  MouseDoubleClick="Close_Click" VerticalAlignment="Top" Width="20" Height="20" HorizontalAlignment="Right" Margin="0 13 14 0" Opacity="0.3" />
+
+                <!--Inputs-->
+                <ContentControl Name="CC" Grid.Column="1" />
+
+            </Grid>
+
+        </Border>
+        <!--
+        <ContentControl Name="MainWindow"></ContentControl>
+        -->
+
     </Grid>
+
 </Window>
+
+
+

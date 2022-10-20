@@ -30,12 +30,11 @@ namespace VetClinic
             { // load values to be edited
                 OwnerIdInput.Text = currOwner.id.ToString();
 
-                BtnAdd.Content = "not null";
             }
             else
             {
-               
-                BtnAdd.Content = "null";
+                MessageBox.Show(this, "Please select owner", "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return ;
             }
 
 

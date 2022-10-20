@@ -45,7 +45,8 @@ namespace VetClinic
         }
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
+            Globals.mainWindow.Show();
         }
 
   
@@ -87,13 +88,14 @@ namespace VetClinic
             Globals.prescriptionDialog.Owner = this;
             if (Globals.prescriptionDialog.ShowDialog() == true)
             {
-               
-            }
+              
+             }
         }
 
         private void BtnMain_Click(object sender, RoutedEventArgs e)
         {
-
+            Globals.adminDialog.Close();
+            Globals.mainWindow.Show();
         }
 
         private void BtnAddVet_Click(object sender, RoutedEventArgs e)

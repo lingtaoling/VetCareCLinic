@@ -84,6 +84,9 @@
     <Compile Include="AddEditVet.xaml.cs">
       <DependentUpon>AddEditVet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddPrescriptionDialog.xaml.cs">
+      <DependentUpon>AddPrescriptionDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminUsers.xaml.cs">
       <DependentUpon>AdminUsers.xaml</DependentUpon>
     </Compile>
@@ -119,6 +122,7 @@
     <Compile Include="PrescriptionDialog.xaml.cs">
       <DependentUpon>PrescriptionDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PrescriptionPartial.cs" />
     <Compile Include="UserPartial.cs" />
     <Compile Include="Pet.cs">
       <DependentUpon>VetDbContext.tt</DependentUpon>
@@ -160,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddEditVet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddPrescriptionDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -248,6 +256,8 @@
     <Resource Include="images\pic.png" />
     <Resource Include="images\login.gif" />
     <Resource Include="images\paw.png" />
+    <Resource Include="dailyScrum.txt" />
+    <Resource Include="images\vet.png" />
     <Content Include="VetDbContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>VetDbContext.Context.cs</LastGenOutput>

@@ -1,0 +1,120 @@
+<< current date goes here >>
+1. What I have done / not done since last Scrum?
+2. What I plan to do from this scrum to next? (next 24 hours)
+3. Where do I need assistance? What do I need to figure out?
+
+
+
+
+----------------------------------------------------------------------------------
+2022/10/19 Ling
+1. Done / not done since last scrum:
+- Coding Add user, add pet, add owner dialogs 
+- Finishing Home window, Prescription window
+- Fixing opening, closing windows bugs
+
+2. To do until next Scrum:
+- Finishing CRUD prescriprion functions
+
+3. Where do I need assistance? What do I need to figure out?
+- Needing help to fix the clicking windows
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------
+2022/10/18 Ling
+1. Done / not done since last scrum:
+- Finishing register and login fucntions 
+- Coding CRUD users
+
+2. To do until next Scrum:
+- Finishing CRUD users functions
+
+
+
+
+
+
+
+
+
+
+
+
+2022/10/18 Kristy
+
+1. What I have done / not done since last Scrum?
+Worked on landing page, reviewed class information and Trello
+
+
+2. What I plan to do from this scrum to next? (next 24 hours)
+Continue on this task as well as talk to team to see what will come next
+
+
+3. Where do I need assistance? What do I need to figure out?
+I am having issues with my virtual machine; I will need to troubleshoot. 
+
+
+
+
+----------------------------------------------------------------------------------
+2022/10/17 Ling
+1. Done / not done since last scrum:
+- Coding register and login pages 
+- Finishing the xaml pages of register and login
+
+2. To do until next Scrum:
+- Finishing connect to db and register and login functions
+
+3. Where do I need assistance? What do I need to figure out?
+-  How to connect db 
+
+2022/10/17 Kristy
+1. Done / not done since last scrum:
+- Started with main page for admin
+
+2. To do until next Scrum:
+- Finish this page, make sure it is fully functional
+
+3. Where do I need assistance? What do I need to figure out?
+- Review some of the information from relevant classes to be sure I've done everything correctly
+
+
+2022/10/17 Edgar
+1. Done / Not Done
+- Set up Db
+- Set up Trello
+- Watched Videos and implemented User Control
+- Watched videos on Grid-splitter
+- Started AppointmentsUC xaml
+
+2. To do before next scrum
+- Set up Xaml for make Appointments
+- Implement gridsplitter for view appointments
+- Test User control for other pages 
+- Start and hopefully finish Appointments code behind
+
+
+
+----------------------------------------------------------------------------------
+2022/10/12 Ling
+1. Done / not done since last scrum:
+- UI Design and set up the git 
+- Finishing EDR table
+
+2. To do until next Scrum:
+- Finishing register
+
+2022/10/12 Edgar
+1. Do Mock-ups
+2. helping out with other stuff
