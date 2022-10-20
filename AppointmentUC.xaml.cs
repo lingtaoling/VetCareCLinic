@@ -2,8 +2,11 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Migrations.Model;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,41 +30,44 @@ namespace VetClinic
         public AppointmentUC()
         {
             InitializeComponent();
+            try
+            {
+                LvAppointment.ItemsSource = Globals.dbContext.Appointments.ToList();
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show("Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                Environment.Exit(1);
+            }
         }
-
 
 
         private void BtnAppointment_Click(object sender, RoutedEventArgs e)
         {
+                DateTime when = DpAppointment.SelectedDate.Value.Date.Add(TpAppointments.SelectedTime.Value.TimeOfDay);
 
-            DateTime when = DpAppointment.SelectedDate.Value.Date.Add(TpAppointments.SelectedTime.Value.TimeOfDay);
+            string vetIdStr = ComboPet.SelectedValue.ToString();
+            int vet_id = Convert.ToInt32(vetIdStr);
+            string ownerIdStr = ComboOwner.SelectedValue.ToString();
+            int owner_id = Convert.ToInt32(ownerIdStr);
 
-           
-            Appointment newAppointment = new Appointment(ComboName.SelectedItem, ComboPet.SelectedItem, ComboVet.SelectedItem, TbxNotes.Text, when);
+            string petIdStr = ComboPet.SelectedValue.ToString();
+            int pet_id = Convert.ToInt32(petIdStr);
 
-            
+            string note = TbxNotes.Text;
+
+            Appointment newAppointment = new Appointment(vet_id, owner_id, pet_id, when, note);
+
             LvAppointment.ItemsSource = Globals.dbContext.Appointments.ToList();
-            Globals.dbContext.Appointments.Add(newAppointment);
-            
-            try
-            {
+                Globals.dbContext.Appointments.Add(newAppointment);
+
+
                 Globals.dbContext.SaveChanges();
-            }
-            
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var errors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in errors.ValidationErrors)
-                    {
-                        // get the error message 
-                        string errorMessage = validationError.ErrorMessage;
-                    }
-                }
-            }
 
+            }
+           
 
-        }
         public bool Vet()
         { User user = new User();
             if (user.role == 1)
@@ -73,25 +79,27 @@ namespace VetClinic
             return false;
             
         }
+        
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            ComboName.ItemsSource = Globals.dbContext.Owners.ToList();
-            ComboVet.ItemsSource = Globals.dbContext.Users.ToList();
+            ComboOwner.ItemsSource = Globals.dbContext.Owners.ToList();
+            ComboVet.ItemsSource = Globals.dbContext.Vets.ToList();
         }
 
-        private void ComboName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboOwner_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Owner owner = new Owner();
-            Pet pet = new Pet();
-            if (owner.id == pet.owner_id)
-            {
-                ComboPet.ItemsSource = Globals.dbContext.Pets.ToList();
-            }
-            else
-            {
-                return;
-            }
+            //ComboVet.SelectedValue = ComboPet.ItemsSource.ToString();
+            
+           /* var cbo = sender as ComboBox;
+            var selItem = cbo.SelectedItem as Appointment;
+            
+                    foreach (var item in selItem.owner_id.ToString())
+                    {
+                        ComboPet.Items.Add(item);
+                    }*/
+                    ComboPet.ItemsSource = Globals.dbContext.Pets.ToList();
         }
     }
+
 }

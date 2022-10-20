@@ -9,33 +9,40 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White" Margin="0,0,0,10">
         <Label Content="Appointments" FontSize="28" HorizontalAlignment="Left" Margin="215,23,0,0" VerticalAlignment="Top" Width="223" Height="49"/>
-        <Label Content="Name:" HorizontalAlignment="Left" Margin="16,86,0,0" VerticalAlignment="Top" Width="47"/>
-        <Label Content="Pets' Name:" HorizontalAlignment="Left" Margin="16,117,0,0" VerticalAlignment="Top" Width="78"/>
-        <Label Content="Doctor:" HorizontalAlignment="Left" Margin="16,148,0,0" VerticalAlignment="Top" Width="52"/>
+        <Label Content="Doctor:" HorizontalAlignment="Left" Margin="16,86,0,0" VerticalAlignment="Top" Width="47"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="16,117,0,0" VerticalAlignment="Top" Width="78"/>
+        <Label Content="Pet:" HorizontalAlignment="Left" Margin="16,148,0,0" VerticalAlignment="Top" Width="52"/>
         <Label Content="Notes:" HorizontalAlignment="Left" Margin="16,179,0,0" VerticalAlignment="Top" Width="47"/>
         <Label Content="Date:" HorizontalAlignment="Left" Margin="16,234,0,0" VerticalAlignment="Top" Width="39"/>
         <Label Content="Time:" HorizontalAlignment="Left" Margin="16,271,0,0" VerticalAlignment="Top" Width="40"/>
-        <ComboBox x:Name="ComboName" HorizontalAlignment="Left" Margin="122,86,0,0"   VerticalAlignment="Top" Width="133" SelectedItem="{Binding Owner}" SelectionChanged="ComboName_SelectionChanged"
-                  DisplayMemberPath="name"
+        <ComboBox x:Name="ComboVet" HorizontalAlignment="Left" Margin="122,86,0,0"   VerticalAlignment="Top" Width="133" ItemsSource="{Binding}" 
+                  DisplayMemberPath="id"
                   SelectedValuePath="id"/>
-        <ComboBox x:Name="ComboPet" HorizontalAlignment="Left" Margin="122,117,0,0"   VerticalAlignment="Top" Width="133" SelectedItem="{Binding Pet}"
+        <ComboBox x:Name="ComboOwner" HorizontalAlignment="Left" Margin="122,117,0,0"   VerticalAlignment="Top" Width="133" ItemsSource="{Binding}"
                   DisplayMemberPath="name"
-                  SelectedValuePath="id"/>
-        <ComboBox x:Name="ComboVet" HorizontalAlignment="Left" Margin="122,148,0,0"  VerticalAlignment="Top" Width="133" SelectedItem="{Binding User}" 
+                  SelectedValuePath="id"
+                  SelectionChanged="ComboOwner_SelectionChanged"/>
+        <ComboBox x:Name="ComboPet" HorizontalAlignment="Left" Margin="122,148,0,0"  VerticalAlignment="Top" Width="133" ItemsSource="{Binding}" 
                   DisplayMemberPath="name"
-                  SelectedValuePath="id"/>
-        <DatePicker x:Name ="DpAppointment" HorizontalAlignment="Left" Margin="122,234,0,0" VerticalAlignment="Top" Width="22"/>
+                  SelectedValuePath="id"
+                  />
+        <DatePicker x:Name ="DpAppointment" HorizontalAlignment="Left" Margin="122,234,0,0" VerticalAlignment="Top" Width="133"/>
 
 
         <Button Content="Submit" HorizontalAlignment="Left" Margin="122,334,0,0" Click="BtnAppointment_Click" VerticalAlignment="Top" Width="86"/>
-        <materialDesign:TimePicker Name ="TpAppointments" HorizontalAlignment="Left" Margin="122,271,0,0" VerticalAlignment="Top" Width="22"/>
-        <ListView Name="LvAppointment" Margin="295,77,10,27">
+        <materialDesign:TimePicker Name ="TpAppointments" HorizontalAlignment="Left" Margin="122,271,0,0" VerticalAlignment="Top" Width="133"/>
+        <ListView Name="LvAppointment" Margin="295,77,10,27" >
+            <ListView.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                </Style>
+            </ListView.Resources>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Owner" Width="120"  DisplayMemberBinding="{Binding owner_id }"  />
-                    <GridViewColumn Header="Pet" Width="90" DisplayMemberBinding="{Binding pet_id}" />
-                    <GridViewColumn Header="Vet" Width="90" DisplayMemberBinding="{Binding user_id}" />
-                    <GridViewColumn Header="Notes" Width="100" DisplayMemberBinding="{Binding notes}" />
+                    <GridViewColumn Header="Owner" Width="120" DisplayMemberBinding="{Binding Path=Owner.name, Mode=TwoWay}" />
+                    <GridViewColumn Header="Pet" Width="90" DisplayMemberBinding="{Binding Path=Pet.name, Mode=TwoWay}" />
+                    <GridViewColumn Header="Vet" Width="90" DisplayMemberBinding="{Binding Path=Vet.User.name, Mode=TwoWay}" />
+                    <GridViewColumn Header="Notes" Width="100" DisplayMemberBinding="{Binding note}" />
                     <GridViewColumn Header="When" Width="100" DisplayMemberBinding="{Binding when}" />
                 </GridView>
             </ListView.View>
