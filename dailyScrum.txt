@@ -20,7 +20,18 @@
 - Needing help to fix the clicking windows
 
 
+2022/10/19
+1. Done / not done since last scrum:
+- Changed to ComboBoxes in appointments
+- Helped fix github
+- Research on binding
 
+2. To do until next Scrum:
+- Finish all of Appointment 
+- Add Dialog box for update and Delete
+
+3. Where do I need assistance? What do I need to figure out?
+- Having trouble calling to combo boxes from db
 
 
 
@@ -42,10 +53,19 @@
 
 
 
+2022/10/18 Edgar
+1. Done / Not Done
+- Created Partial Class for Appointments
+- Set up Xaml User Control Home and Navigation
+- Finished AppointmentsUC xaml
+- Changed Database
 
 
-
-
+2. To do before next scrum
+- Code Behind for Appointments
+- Implement listView for appointments
+- cbange textbox to combo boxes 
+- hopefully finish Appointments code behind
 
 
 
