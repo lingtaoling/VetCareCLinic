@@ -45,51 +45,66 @@ namespace VetClinic
 
         private void BtnAppointment_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
                 DateTime when = DpAppointment.SelectedDate.Value.Date.Add(TpAppointments.SelectedTime.Value.TimeOfDay);
 
-            string vetIdStr = ComboVet.SelectedValue.ToString();
-            int vet_id = Convert.ToInt32(vetIdStr);
-            string ownerIdStr = ComboOwner.SelectedValue.ToString();
-            int owner_id = Convert.ToInt32(ownerIdStr);
+                string vetIdStr = ComboVet.SelectedValue.ToString();
+                int vet_id = Convert.ToInt32(vetIdStr);
+                string ownerIdStr = ComboOwner.SelectedValue.ToString();
+                int owner_id = Convert.ToInt32(ownerIdStr);
 
-            string petIdStr = ComboPet.SelectedValue.ToString();
-            int pet_id = Convert.ToInt32(petIdStr);
+                string petIdStr = ComboPet.SelectedValue.ToString();
+                int pet_id = Convert.ToInt32(petIdStr);
 
-            string note = TbxNotes.Text;
+                string note = TbxNotes.Text;
 
-            Appointment newAppointment = new Appointment(vet_id, owner_id, pet_id, when, note);
-
-            LvAppointment.ItemsSource = Globals.dbContext.Appointments.ToList();
-                Globals.dbContext.Appointments.Add(newAppointment);
-
-
-                Globals.dbContext.SaveChanges();
-
+                Appointment newAppointment = new Appointment(vet_id, owner_id, pet_id, when, note);
+                    Globals.dbContext.Appointments.Add(newAppointment);
+                try
+                {
+                     Globals.dbContext.SaveChanges();
+                }
+                catch(SystemException ex)
+                {
+                        MessageBox.Show("Error adding to database\n" + ex.Message, "Database error",
+                            MessageBoxButton.OK, MessageBoxImage.Error);
+                 }
+               
+                LvAppointment.ItemsSource = Globals.dbContext.Appointments.ToList();
+                ResetFields();
             }
-           
-
-        public bool Vet()
-        { User user = new User();
-            if (user.role == 1)
+            catch (ArgumentException ex)
             {
-                ComboVet.ItemsSource = Globals.dbContext.Users.ToList();
-                return true;
+                MessageBox.Show(ex.Message, "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
-            return false;
-            
+            catch (SystemException ex)
+            {
+                MessageBox.Show("Error reading from database\n" + ex.Message, "Database error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
         
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            ComboOwner.ItemsSource = Globals.dbContext.Owners.ToList();
-            ComboVet.ItemsSource = Globals.dbContext.Vets.ToList();
+           try
+            { 
+                ComboOwner.ItemsSource = Globals.dbContext.Owners.ToList();
+                ComboVet.ItemsSource = Globals.dbContext.Vets.ToList();
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show( "Error reading from database for ComboOwner/ComboPet\n" + ex.Message, "Database error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+           
         }
 
         private void ComboOwner_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //ComboVet.SelectedValue = ComboPet.ItemsSource.ToString();
+            try {  //ComboVet.SelectedValue = ComboPet.ItemsSource.ToString();
             
            /* var cbo = sender as ComboBox;
             var selItem = cbo.SelectedItem as Appointment;
@@ -99,6 +114,24 @@ namespace VetClinic
                         ComboPet.Items.Add(item);
                     }*/
                     ComboPet.ItemsSource = Globals.dbContext.Pets.ToList();
+            }
+            
+            catch (SystemException ex)
+            {
+                MessageBox.Show("Error reading from database ComboPets\n" + ex.Message, "Database error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void ResetFields()
+        {
+            ComboVet.SelectedIndex = -1;
+            ComboOwner.SelectedIndex = -1;
+            ComboPet.SelectedIndex = -1;
+            TbxNotes.Text = "";
+            DpAppointment.SelectedDate = null;
+            TpAppointments.SelectedTime = null;
+
+
         }
     }
 
